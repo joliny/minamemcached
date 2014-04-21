@@ -1,0 +1,13 @@
+package org.coral.common.client;
+
+import java.util.concurrent.atomic.AtomicLong;
+
+public class Sequence {
+	
+	static private AtomicLong  sequence= new AtomicLong(0);
+	
+	static public long next(){
+		return sequence.incrementAndGet();
+	}
+
+}

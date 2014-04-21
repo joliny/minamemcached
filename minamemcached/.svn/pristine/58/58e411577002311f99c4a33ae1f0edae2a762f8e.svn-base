@@ -1,0 +1,89 @@
+//package org.coral.common.client.pool;
+//
+//import java.util.concurrent.CountDownLatch;
+//
+//import org.apache.mina.core.session.IoSession;
+//import org.coral.common.client.CallBack;
+//import org.coral.common.client.command.Command;
+//import org.coral.common.client.reponse.Reponse;
+//
+//public class MutexIoSessionPool< C, R>
+//		extends AbstractIoSessionPool< C, R> {
+//
+//
+//	public static class SessionHolder<C, R> {
+//		private Command<C> commond;
+//		private Reponse<R> reponse;
+//
+//		public Command<C> getCommond() {
+//			return commond;
+//		}
+//
+//		public void setCommond(Command<C> commond) {
+//			this.commond = commond;
+//		}
+//
+//		public Reponse<R> getReponse() {
+//			return reponse;
+//		}
+//
+//		public void setReponse(Reponse<R> reponse) {
+//			this.reponse = reponse;
+//		}
+//
+//		private CountDownLatch cdl;
+//
+//		public CountDownLatch getCdl() {
+//			return cdl;
+//		}
+//
+//		public void setCdl(CountDownLatch cdl) {
+//			this.cdl = cdl;
+//		}
+//
+//	}
+//
+//	protected R doSendSync(Command<C> command) {
+//
+//		IoSession session = selectSession();
+//
+//		SessionHolder<C, R> holder = new SessionHolder<C, R>();
+//
+//		holder.setCdl(new CountDownLatch(1));
+//		holder.setCommond(command);
+//		session.setAttribute(command.getSequence(), holder);
+//
+//		session.write(command);
+//		try {
+//			holder.getCdl().await();
+//		} catch (InterruptedException e) {
+//			throw new RuntimeException(e);
+//		}
+//
+//		holder = (SessionHolder<C, R>) session.getAttribute(command
+//				.getSequence());
+//		return holder.getReponse().getMessage();
+//
+//	}
+//
+//	public void close() {
+//
+//		getSessions().foreach(new CallBack<IoSession>() {
+//
+//			public void execute(IoSession session) {
+//
+//				session.close();
+//
+//			}
+//		});
+//
+//		getConnector().dispose();
+//	}
+//
+//	public R send(C commond, boolean sync) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	
+//}
