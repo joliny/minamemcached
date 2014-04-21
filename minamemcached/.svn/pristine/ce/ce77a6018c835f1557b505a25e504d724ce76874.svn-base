@@ -1,9 +1,0 @@
-package org.coral.common.memcached.command;
-
-public enum Name {
-	
-	get,
-	set,
-	add
-
-}
