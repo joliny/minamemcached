@@ -1,0 +1,17 @@
+package org.coral.common.memcached.command;
+
+import org.coral.common.memcached.reponse.AddReponse;
+
+public class AddCommand extends StoreCommand<AddReponse> {
+
+	public AddReponse create() {
+		
+		return new AddReponse();
+	}
+
+	public Name getName() {
+		
+		return Name.add;
+	}
+
+}

@@ -1,0 +1,10 @@
+package org.coral.common.client.queue.creator;
+
+import org.apache.mina.core.service.IoConnector;
+import org.coral.common.client.queue.SessionQueue;
+
+public interface SessionQueueCreator {
+
+	SessionQueue init(IoConnector connector);
+
+}

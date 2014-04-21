@@ -1,0 +1,27 @@
+//package org.coral.common.client.mina.handler;
+//
+//import org.apache.mina.core.service.IoHandlerAdapter;
+//import org.apache.mina.core.session.IoSession;
+//import org.coral.common.client.pool.MutexIoSessionPool.SessionHolder;
+//import org.coral.common.client.reponse.Reponse;
+//
+//public  class CallBackHandler<C,R> extends IoHandlerAdapter {
+//
+//	@SuppressWarnings("unchecked")
+//	public void messageReceived(IoSession session, Object message)
+//			throws Exception {
+//		
+//		Reponse<R>  reponse = (Reponse<R>) message;
+//		
+//		SessionHolder<C, R>  holder= (SessionHolder<C, R>) session.getAttribute(reponse.getSequence());
+//		
+//		if(holder!=null){	
+//			holder.setReponse(reponse);
+//			holder.getCdl().countDown();
+//		}
+//	
+//		
+//	}
+//	
+//
+//}

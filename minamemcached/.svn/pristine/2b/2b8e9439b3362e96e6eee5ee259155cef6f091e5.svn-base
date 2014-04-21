@@ -1,0 +1,18 @@
+package org.coral.common.memcached;
+
+import org.coral.common.memcached.reponse.SetReponse;
+
+public interface MemcachedClient {
+
+	public byte[] get(String key);
+
+	public SetReponse set(String key, String value);
+
+	public boolean add(String key, byte[] value);
+	
+	public void init();
+	
+	
+	public void close();
+
+}
