@@ -1,4 +1,0 @@
-javassist-proxy
-===============
-
-javassist-proxy
