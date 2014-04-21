@@ -1,5 +1,0 @@
-package org.coral.common.client;
-
-public interface CallBack<T> {
-	void execute(T t);
-}
