@@ -1,0 +1,17 @@
+package org.coral.common.memcached.command;
+
+import java.nio.charset.Charset;
+
+import org.apache.mina.core.buffer.IoBuffer;
+import org.coral.common.memcached.reponse.MemcachedResponse;
+
+
+public interface MemcachedCommand<T extends MemcachedResponse<?>> {
+
+	Name getName();
+
+	IoBuffer toBuffer(Charset charset);
+
+	T create();
+
+}
